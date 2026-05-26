@@ -1,15 +1,1532 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friend Request Card</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Fest 2026 🎉 - Annual Extravaganza</title>
+  <meta name="description"
+    content="Annual College Fest 2026 – Register for Singing, Coding, Dance, and more exciting events!" />
+  <meta name="theme-color" content="#7c3aed" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & ROOT ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a1a;
+      --bg2: #0f0f2a;
+      --bg3: #1a1a3e;
+      --primary: #7c3aed;
+      --primary-light: #a855f7;
+      --primary-dark: #6d28d9;
+      --accent: #06b6d4;
+      --accent2: #f59e0b;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ===== ANIMATED BACKGROUND ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(6, 182, 212, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 55% 50%, rgba(245, 158, 11, 0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: bgShift 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0% { opacity: 1; }
+      100% { opacity: 0.8; }
+    }
+
+    /* ===== PARTICLES ===== */
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      animation: float linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.18; }
+      90% { opacity: 0.18; }
+      to {
+        transform: translateY(-10vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(10, 10, 26, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      gap: 20px;
+    }
+
+    .nav-logo {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: var(--glass);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 2px;
+      }
+
+      .nav-links a {
+        padding: 6px 10px;
+      }
+    }
+
+    /* ===== HERO ===== */
+    header.hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: clamp(60px, 10vw, 90px) 20px clamp(50px, 8vw, 70px);
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(6, 182, 212, 0.3));
+      border: 1px solid rgba(124, 58, 237, 0.5);
+      color: var(--primary-light);
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+      animation: pulse-badge 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
+    }
+
+    header.hero h1 {
+      font-size: clamp(1.75rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, var(--primary-light) 40%, var(--accent) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 18px;
+      animation: fadeUp 0.8s ease both;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: -1px;
+    }
+
+    header.hero p.subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      animation: fadeUp 0.9s 0.15s ease both;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: clamp(12px, 2vw, 15px) clamp(24px, 5vw, 36px);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.45);
+      transition: var(--transition);
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(124, 58, 237, 0.6);
+    }
+
+    .hero-cta:active {
+      transform: translateY(-1px);
+    }
+
+    .hero-countdown {
+      margin-top: clamp(40px, 8vw, 50px);
+      display: flex;
+      justify-content: center;
+      gap: clamp(12px, 3vw, 24px);
+      flex-wrap: wrap;
+      animation: fadeUp 1.1s 0.45s ease both;
+    }
+
+    .countdown-unit {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 22px);
+      text-align: center;
+      min-width: clamp(70px, 15vw, 80px);
+      backdrop-filter: blur(8px);
+      transition: var(--transition);
+    }
+
+    .countdown-unit:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+    }
+
+    .countdown-unit span.num {
+      display: block;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .countdown-unit span.label {
+      font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0;
+      background: linear-gradient(90deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.15));
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      padding: clamp(16px, 3vw, 18px);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: clamp(8px, 2vw, 10px) 20px;
+      border-right: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-item:hover {
+      transform: scale(1.05);
+    }
+
+    .stat-item .snum {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .stat-item .slabel {
+      font-size: clamp(0.65rem, 1.3vw, 0.78rem);
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        padding: 12px 16px;
+      }
+
+      .stat-item:nth-child(odd) {
+        border-right: 1px solid var(--glass-border);
+      }
+
+      .stat-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+      text-align: center;
+      margin-bottom: clamp(32px, 5vw, 40px);
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+
+    /* ===== MAIN GRID ===== */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(40px, 8vw, 60px) 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: clamp(24px, 4vw, 32px);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 40px 16px;
+      }
+    }
+
+    /* ===== GLASS CARD ===== */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 5vw, 32px);
+      backdrop-filter: blur(16px);
+      transition: var(--transition);
+      transform-origin: center;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+
+    .card h2 {
+      font-size: clamp(1.2rem, 3vw, 1.4rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .card h2 .icon {
+      font-size: 1.5rem;
+    }
+
+    /* ===== EVENT ITEMS ===== */
+    .event-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: clamp(12px, 2vw, 16px);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      margin-bottom: 14px;
+      transition: var(--transition);
+      flex-wrap: wrap;
+    }
+
+    .event-item:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.4);
+      transform: translateX(4px);
+    }
+
+    .event-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .event-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .event-emoji {
+      width: clamp(40px, 8vw, 46px);
+      height: clamp(40px, 8vw, 46px);
+      border-radius: var(--radius-md);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .event-emoji.e1 {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(239, 68, 68, 0.2));
+    }
+
+    .event-emoji.e2 {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.25));
+    }
+
+    .event-emoji.e3 {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.25));
+    }
+
+    .event-emoji.e4 {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(245, 158, 11, 0.2));
+    }
+
+    .event-emoji.e5 {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(245, 158, 11, 0.2));
+    }
+
+    .event-details h3 {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .event-details p {
+      font-size: clamp(0.7rem, 1.5vw, 0.78rem);
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .event-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .event-seats {
+      font-size: clamp(0.65rem, 1.2vw, 0.72rem);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .seats-open {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .seats-few {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--accent2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    @media (max-width: 640px) {
+      .event-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      padding: clamp(8px, 1.5vw, 9px) clamp(16px, 3vw, 20px);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.8rem, 1.5vw, 0.88rem);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.55);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ===== FORM ===== */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: clamp(0.75rem, 1.5vw, 0.82rem);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: clamp(10px, 2vw, 12px) 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.9rem, 1.5vw, 0.95rem);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      background: rgba(124, 58, 237, 0.08);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    .form-group input.error {
+      border-color: var(--danger);
+      background: rgba(239, 68, 68, 0.07);
+    }
+
+    .form-group input.success {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .form-group select option {
+      background: #1a1a3e;
+      color: #fff;
+    }
+
+    .form-group input[readonly] {
+      color: var(--primary-light);
+      cursor: default;
+      background: rgba(124, 58, 237, 0.1);
+    }
+
+    .error-text {
+      font-size: clamp(0.7rem, 1.3vw, 0.78rem);
+      color: var(--danger);
+      margin-top: 5px;
+      display: none;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== MESSAGE BOX ===== */
+    #message {
+      margin-top: 16px;
+      padding: clamp(12px, 2vw, 14px) clamp(14px, 3vw, 18px);
+      border-radius: var(--radius-md);
+      font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+      font-weight: 600;
+      display: none;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #message.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--success);
+      display: block;
+    }
+
+    #message.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: var(--danger);
+      display: block;
+    }
+
+    /* ===== SCHEDULE SECTION ===== */
+    .schedule-section {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px clamp(50px, 8vw, 60px);
+    }
+
+    .schedule-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 6px;
+      margin-bottom: 28px;
+      width: fit-content;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+      padding: clamp(8px, 1.5vw, 9px) clamp(14px, 2vw, 22px);
+      border-radius: var(--radius-sm);
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-family: 'Space Grotesk', monospace;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    }
+
+    .schedule-timeline {
+      display: none;
+    }
+
+    .schedule-timeline.active {
+      display: block;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: clamp(12px, 3vw, 20px);
+      padding: clamp(14px, 2vw, 18px) 0;
+      border-bottom: 1px solid var(--glass-border);
+      align-items: flex-start;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-time {
+      min-width: clamp(70px, 15vw, 80px);
+      font-size: clamp(0.75rem, 1.5vw, 0.82rem);
+      font-weight: 700;
+      color: var(--primary-light);
+      padding-top: 2px;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+    }
+
+    .timeline-info h4 {
+      font-size: clamp(0.9rem, 1.8vw, 0.97rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .timeline-info p {
+      font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ===== TOAST ===== */
+    #toast {
+      position: fixed;
+      bottom: clamp(20px, 5vw, 32px);
+      right: clamp(20px, 5vw, 32px);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      padding: clamp(12px, 2vw, 14px) clamp(18px, 3vw, 24px);
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.45);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 9999;
+      max-width: 90vw;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      #toast {
+        left: clamp(20px, 5vw, 32px);
+        right: clamp(20px, 5vw, 32px);
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 10, 26, 0.9);
+      border-top: 1px solid var(--glass-border);
+      padding: clamp(32px, 5vw, 40px) 20px clamp(16px, 3vw, 24px);
+      text-align: center;
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 24px);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: clamp(0.8rem, 1.5vw, 0.88rem);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    footer p {
+      font-size: clamp(0.75rem, 1.3vw, 0.82rem);
+      color: var(--text-muted);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      nav,
+      #particles,
+      .hero-cta,
+      .btn,
+      footer {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h5>Who will win ipl</h5>
-  <h1>****</h1>
-  <button>Guess</button>
-   <script src="script.js"></script>
+
+  <!-- ===== PARTICLES ===== -->
+  <div id="particles"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">🎓 CollegeFest '26</div>
+    <div class="nav-links">
+      <a href="#hero" class="active">Home</a>
+      <a href="#events">Events</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#register">Register</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="hero">
+    <div class="hero-badge">✨ Annual Extravaganza</div>
+    <h1>College Fest 2026 🎉</h1>
+    <p class="subtitle">Join thousands of students for the biggest campus event of the year. Compete, perform, innovate.</p>
+    <button onclick="document.getElementById('events').scrollIntoView({behavior: 'smooth'})" class="hero-cta">
+      <span>Explore Events</span>
+      <span>→</span>
+    </button>
+
+    <!-- Countdown -->
+    <div class="hero-countdown" aria-live="polite" aria-label="Event countdown timer">
+      <div class="countdown-unit">
+        <span class="num" id="cd-days">00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="num" id="cd-hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="num" id="cd-mins">00</span>
+        <span class="label">Mins</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="num" id="cd-secs">00</span>
+        <span class="label">Secs</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats-bar reveal" aria-label="Event statistics">
+    <div class="stat-item">
+      <div class="snum">2,400+</div>
+      <div class="slabel">Students</div>
+    </div>
+    <div class="stat-item">
+      <div class="snum">15+</div>
+      <div class="slabel">Events</div>
+    </div>
+    <div class="stat-item">
+      <div class="snum">3</div>
+      <div class="slabel">Days</div>
+    </div>
+    <div class="stat-item">
+      <div class="snum">₹5L+</div>
+      <div class="slabel">Prize Pool</div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CARD GRID ===== -->
+  <main id="events">
+
+    <!-- Events Card -->
+    <article class="card reveal" id="events-card">
+      <h2><span class="icon" aria-hidden="true">📅</span> Upcoming Events</h2>
+
+      <div class="event-item" id="ev-singing">
+        <div class="event-info">
+          <div class="event-emoji e1" aria-hidden="true">🎤</div>
+          <div class="event-details">
+            <h3>Singing Competition</h3>
+            <p>Solo · Apr 15, 2026</p>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-seats seats-open">48 seats</span>
+          <button class="btn btn-primary" onclick="selectEvent('Singing Competition')">Register</button>
+        </div>
+      </div>
+
+      <div class="event-item" id="ev-coding">
+        <div class="event-info">
+          <div class="event-emoji e2" aria-hidden="true">💻</div>
+          <div class="event-details">
+            <h3>Coding Contest</h3>
+            <p>Team of 2 · Apr 16, 2026</p>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-seats seats-open">32 seats</span>
+          <button class="btn btn-primary" onclick="selectEvent('Coding Contest')">Register</button>
+        </div>
+      </div>
+
+      <div class="event-item" id="ev-dance">
+        <div class="event-info">
+          <div class="event-emoji e3" aria-hidden="true">💃</div>
+          <div class="event-details">
+            <h3>Dance Battle</h3>
+            <p>Group · Apr 16, 2026</p>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-seats seats-few">6 seats</span>
+          <button class="btn btn-primary" onclick="selectEvent('Dance Battle')">Register</button>
+        </div>
+      </div>
+
+      <div class="event-item" id="ev-quiz">
+        <div class="event-info">
+          <div class="event-emoji e4" aria-hidden="true">🧠</div>
+          <div class="event-details">
+            <h3>Quiz Challenge</h3>
+            <p>Solo · Apr 17, 2026</p>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-seats seats-open">60 seats</span>
+          <button class="btn btn-primary" onclick="selectEvent('Quiz Challenge')">Register</button>
+        </div>
+      </div>
+
+      <div class="event-item" id="ev-art">
+        <div class="event-info">
+          <div class="event-emoji e5" aria-hidden="true">🎨</div>
+          <div class="event-details">
+            <h3>Art Exhibition</h3>
+            <p>Solo · Apr 17, 2026</p>
+          </div>
+        </div>
+        <div class="event-actions">
+          <span class="event-seats seats-few">8 seats</span>
+          <button class="btn btn-primary" onclick="selectEvent('Art Exhibition')">Register</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Registration Card -->
+    <article class="card reveal" id="register">
+      <h2><span class="icon" aria-hidden="true">📝</span> Registration Form</h2>
+
+      <form id="regForm" onsubmit="return validateForm(event)" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="First name" required />
+            <div class="error-text" id="firstName-err">Please enter your first name.</div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Last name" required />
+            <div class="error-text" id="lastName-err">Please enter your last name.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@college.edu" required />
+          <div class="error-text" id="email-err">Please enter a valid email.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+91 9876543210" maxlength="10" required />
+          <div class="error-text" id="phone-err">Enter a valid 10-digit phone number.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="college">College / Institution</label>
+          <input type="text" id="college" placeholder="Your college name" required />
+          <div class="error-text" id="college-err">Please enter your college name.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="year">Year of Study</label>
+          <select id="year" required>
+            <option value="">Select year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="pg">Post Graduate</option>
+          </select>
+          <div class="error-text" id="year-err">Please select your year.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="eventField">Selected Event</label>
+          <input type="text" id="eventField" placeholder="Click an event to select" readonly />
+          <div class="error-text" id="event-err">Please select an event first.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn"
+          style="width:100%;padding:clamp(12px, 2vw, 14px);font-size:clamp(0.95rem, 1.5vw, 1rem);border-radius:var(--radius-md);margin-top:4px;">
+          🚀 Complete Registration
+        </button>
+      </form>
+
+      <div id="message" role="alert" aria-live="polite"></div>
+    </article>
+  </main>
+
+  <!-- ===== SCHEDULE ===== -->
+  <section class="schedule-section reveal" id="schedule">
+    <div class="section-title">
+      <h2>📆 Event Schedule</h2>
+      <p>Three days packed with thrilling competitions and performances</p>
+    </div>
+
+    <div class="schedule-tabs" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true" onclick="showDay('day1', this)">Day 1 – Apr 15</button>
+      <button class="tab-btn" role="tab" aria-selected="false" onclick="showDay('day2', this)">Day 2 – Apr 16</button>
+      <button class="tab-btn" role="tab" aria-selected="false" onclick="showDay('day3', this)">Day 3 – Apr 17</button>
+    </div>
+
+    <div id="day1" class="schedule-timeline active" role="tabpanel">
+      <div class="timeline-item">
+        <div class="timeline-time">09:00 AM</div>
+        <div class="timeline-dot" style="background:#a855f7"></div>
+        <div class="timeline-info">
+          <h4>🎤 Singing Competition Prelims</h4>
+          <p>Auditorium A • Solo category</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00 PM</div>
+        <div class="timeline-dot" style="background:#06b6d4"></div>
+        <div class="timeline-info">
+          <h4>🍽️ Lunch Break</h4>
+          <p>Food court open for all participants</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">02:00 PM</div>
+        <div class="timeline-dot" style="background:#f59e0b"></div>
+        <div class="timeline-info">
+          <h4>🎤 Singing Competition Finals</h4>
+          <p>Auditorium A • Top 10 performers</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">06:00 PM</div>
+        <div class="timeline-dot" style="background:#10b981"></div>
+        <div class="timeline-info">
+          <h4>🎊 Opening Ceremony & DJ Night</h4>
+          <p>Open Grounds • All welcome</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="day2" class="schedule-timeline" role="tabpanel">
+      <div class="timeline-item">
+        <div class="timeline-time">10:00 AM</div>
+        <div class="timeline-dot" style="background:#7c3aed"></div>
+        <div class="timeline-info">
+          <h4>💻 Coding Contest Round 1</h4>
+          <p>Computer Lab B • Team of 2</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">01:00 PM</div>
+        <div class="timeline-dot" style="background:#06b6d4"></div>
+        <div class="timeline-info">
+          <h4>💃 Dance Battle Auditions</h4>
+          <p>Stage C • Group performances</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">04:00 PM</div>
+        <div class="timeline-dot" style="background:#a855f7"></div>
+        <div class="timeline-info">
+          <h4>💻 Coding Contest Finals</h4>
+          <p>Computer Lab B • Top 8 teams</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">07:00 PM</div>
+        <div class="timeline-dot" style="background:#10b981"></div>
+        <div class="timeline-info">
+          <h4>💃 Dance Battle Finals & Show</h4>
+          <p>Main Stage • Live audience</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="day3" class="schedule-timeline" role="tabpanel">
+      <div class="timeline-item">
+        <div class="timeline-time">10:00 AM</div>
+        <div class="timeline-dot" style="background:#f59e0b"></div>
+        <div class="timeline-info">
+          <h4>🧠 Quiz Challenge</h4>
+          <p>Seminar Hall • All departments</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00 PM</div>
+        <div class="timeline-dot" style="background:#a855f7"></div>
+        <div class="timeline-info">
+          <h4>🎨 Art Exhibition</h4>
+          <p>Gallery Hall • Public viewing</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">05:00 PM</div>
+        <div class="timeline-dot" style="background:#ef4444"></div>
+        <div class="timeline-info">
+          <h4>🏆 Prize Distribution Ceremony</h4>
+          <p>Auditorium A • Chief Guest</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">07:30 PM</div>
+        <div class="timeline-dot" style="background:#06b6d4"></div>
+        <div class="timeline-info">
+          <h4>🎆 Farewell & Grand Finale</h4>
+          <p>Open Grounds • Fireworks show</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer role="contentinfo">
+    <div class="footer-links">
+      <a href="#hero">Home</a>
+      <a href="#events">Events</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#register">Register</a>
+      <a href="mailto:infosnarta@gmail.com">Contact</a>
+    </div>
+    <p>© 2026 College Fest | All Rights Reserved | Made by Snarta</p>
+  </footer>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ---- DEBOUNCE UTILITY ----
+    const debounce = (func, delay) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+      };
+    };
+
+    // ---- PARTICLES ----
+    const particleContainer = document.getElementById('particles');
+    const colors = ['#7c3aed', '#a855f7', '#06b6d4', '#f59e0b', '#10b981'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 8 + 4;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random() * 100}%;
+        background:${colors[Math.floor(Math.random() * colors.length)]};
+        animation-duration:${8 + Math.random() * 12}s;
+        animation-delay:${Math.random() * 8}s;
+      `;
+      particleContainer.appendChild(p);
+    }
+
+    // ---- COUNTDOWN ----
+    const festDate = new Date('2026-04-15T09:00:00');
+    function updateCountdown() {
+      const diff = festDate - Date.now();
+      if (diff <= 0) {
+        ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+        return;
+      }
+      const pad = n => String(Math.floor(n)).padStart(2, '0');
+      document.getElementById('cd-days').textContent = pad(diff / 86400000);
+      document.getElementById('cd-hours').textContent = pad((diff % 86400000) / 3600000);
+      document.getElementById('cd-mins').textContent = pad((diff % 3600000) / 60000);
+      document.getElementById('cd-secs').textContent = pad((diff % 60000) / 1000);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ---- SELECT EVENT ----
+    function selectEvent(name) {
+      const eventField = document.getElementById('eventField');
+      eventField.value = name;
+      eventField.classList.add('success');
+      document.getElementById('event-err').style.display = 'none';
+      showToast('✅ ' + name + ' selected!');
+
+      // Scroll to form
+      const registerCard = document.getElementById('register');
+      setTimeout(() => {
+        registerCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
+      // Highlight selected event
+      const map = {
+        'Singing Competition': 'ev-singing',
+        'Coding Contest': 'ev-coding',
+        'Dance Battle': 'ev-dance',
+        'Quiz Challenge': 'ev-quiz',
+        'Art Exhibition': 'ev-art'
+      };
+
+      document.querySelectorAll('.event-item').forEach(el => {
+        el.style.background = '';
+        el.style.borderColor = '';
+      });
+
+      const el = document.getElementById(map[name]);
+      if (el) {
+        el.style.background = 'rgba(124,58,237,0.15)';
+        el.style.borderColor = 'rgba(124,58,237,0.6)';
+      }
+    }
+
+    // ---- FORM VALIDATION ----
+    function validateForm(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const check = (id, errId, condition) => {
+        const input = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (!condition(input.value)) {
+          input.classList.add('error');
+          input.classList.remove('success');
+          err.style.display = 'block';
+          valid = false;
+        } else {
+          input.classList.remove('error');
+          input.classList.add('success');
+          err.style.display = 'none';
+        }
+      };
+
+      check('firstName', 'firstName-err', v => v.trim().length >= 2);
+      check('lastName', 'lastName-err', v => v.trim().length >= 2);
+      check('email', 'email-err', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+      check('phone', 'phone-err', v => /^\d{10}$/.test(v.replace(/\s/g, '')));
+      check('college', 'college-err', v => v.trim().length >= 3);
+
+      const year = document.getElementById('year');
+      const yearErr = document.getElementById('year-err');
+      if (!year.value) {
+        year.classList.add('error');
+        yearErr.style.display = 'block';
+        valid = false;
+      } else {
+        year.classList.remove('error');
+        yearErr.style.display = 'none';
+      }
+
+      check('eventField', 'event-err', v => v.trim() !== '');
+
+      const msg = document.getElementById('message');
+      if (!valid) {
+        msg.textContent = '❌ Please fix the errors above before submitting.';
+        msg.className = 'error';
+        return false;
+      }
+
+      // Success
+      const firstName = document.getElementById('firstName').value.trim();
+      const eventName = document.getElementById('eventField').value;
+      msg.textContent = `✅ ${firstName}, you're registered for ${eventName}! See you there! 🎉`;
+      msg.className = 'success';
+
+      showToast('🎉 Registration successful!');
+
+      // Reset after 3s
+      setTimeout(() => {
+        document.getElementById('regForm').reset();
+        ['firstName', 'lastName', 'email', 'phone', 'college', 'year', 'eventField'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.classList.remove('success', 'error'); }
+        });
+        document.querySelectorAll('.event-item').forEach(el => {
+          el.style.background = '';
+          el.style.borderColor = '';
+        });
+        setTimeout(() => { msg.className = ''; msg.textContent = ''; }, 5000);
+      }, 3000);
+
+      return false;
+    }
+
+    // ---- TOAST ----
+    let toastTimeout;
+    function showToast(text) {
+      const t = document.getElementById('toast');
+      t.textContent = text;
+      t.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ---- SCHEDULE TABS ----
+    function showDay(id, btn) {
+      document.querySelectorAll('.schedule-timeline').forEach(el => {
+        el.classList.remove('active');
+        el.setAttribute('aria-hidden', 'true');
+      });
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      const activeTimeline = document.getElementById(id);
+      activeTimeline.classList.add('active');
+      activeTimeline.setAttribute('aria-hidden', 'false');
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+
+    // ---- SCROLL REVEAL ----
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ---- ACTIVE NAV ----
+    const sections = ['hero', 'events', 'schedule', 'register'];
+    const updateActiveNav = debounce(() => {
+      let current = 'hero';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        a.classList.toggle('active', href === '#' + current);
+        a.setAttribute('aria-current', href === '#' + current ? 'page' : 'false');
+      });
+    }, 50);
+
+    window.addEventListener('scroll', updateActiveNav);
+
+    // ---- FORM INPUT VALIDATION ON INPUT ----
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+
+    if (emailInput) {
+      emailInput.addEventListener('blur', () => {
+        const err = document.getElementById('email-err');
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+        if (!valid && emailInput.value) {
+          emailInput.classList.add('error');
+          err.style.display = 'block';
+        }
+      });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      });
+    }
+  </script>
 </body>
+
 </html>
